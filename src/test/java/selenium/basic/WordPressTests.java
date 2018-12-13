@@ -15,10 +15,10 @@ import java.util.stream.Collectors;
 
 public class WordPressTests {
 
-    private Faker faker = new Faker();
     private WebDriver driver;
     private static ChromeOptions options;
     private final String DRIVER_URL = "http://automatyzacja.benedykt.net/";
+    private Faker faker = new Faker();
     private final String COMMENT = faker.chuckNorris().fact();
     private final String EMAIL = UUID.randomUUID().toString() + "@" + UUID.randomUUID().toString() + "." + UUID.randomUUID().toString();
     private final String URL = UUID.randomUUID().toString() + ".com";

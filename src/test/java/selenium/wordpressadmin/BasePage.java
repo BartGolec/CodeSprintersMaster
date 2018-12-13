@@ -1,5 +1,6 @@
-package selenium.pageobjects;
+package selenium.wordpressadmin;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,11 +11,16 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+public class BasePage {
 
-    protected static ChromeOptions options;
     protected WebDriver driver;
-    protected String randomString = UUID.randomUUID().toString();
+    private static ChromeOptions options;
+    protected static String BASE_URL = "https://automatyzacja.benedykt.net/wp-admin";
+    protected Faker faker = new Faker();
+    protected final String title = faker.gameOfThrones().character();
+    protected final String comment = UUID.randomUUID().toString();
+    protected final static String USERNAME_ADMIN = "automatyzacja";
+    protected final static String PASSWORD_ADMIN = "jesien2018";
 
     @BeforeAll
     public static void setup() {
@@ -24,13 +30,14 @@ public class BaseTest {
     }
 
     @BeforeEach
-    public void startBrowser() {
+    public void startDriver() {
         driver = new ChromeDriver(options);
+        driver.get(BASE_URL);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     @AfterEach
-    public void quitBrowser() {
+    public void shutdownDriver() {
         driver.quit();
     }
 }

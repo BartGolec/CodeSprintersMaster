@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 public class GoogleResultPage {
 
     public static final By RESULT_LOCATION = By.cssSelector("#search .rc .r");
-    private final WebDriver grpDriver;
+    private final WebDriver driver;
 
     public GoogleResultPage(WebDriver driver) {
-        grpDriver = driver;
+        this.driver = driver;
     }
 
     public boolean checkIfGoogleSearchPageContainsThisUrl(String resultURL) {
@@ -28,7 +28,7 @@ public class GoogleResultPage {
     }
 
     private List<WebElement> getResultsByUrl(String resultURL) {
-        return grpDriver.findElements(RESULT_LOCATION)
+        return driver.findElements(RESULT_LOCATION)
                 .stream().filter(a -> a.findElement(By.tagName("a")).getAttribute("href").equals(resultURL)).collect(Collectors.toList());
     }
 }

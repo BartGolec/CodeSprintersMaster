@@ -34,4 +34,7 @@ public class GoogleTests extends BaseTest {
         Assertions.assertTrue(googleResultPage.checkIfGoogleSearchPageContainsThisUrl(url));
         Assertions.assertTrue(googleResultPage.checkIfGoogleSearchPageContainsThisUrlWithGivenTitle(url, title));
     }
+
+    //go to first article
+    //add comment, add if comment exists
 }
